@@ -44,3 +44,4 @@ class UserAdmin(BaseUserAdmin):
 # Second parameter makes sure it uses the UserAdmin class
 # as the model manager.
 admin.site.register(models.User, UserAdmin)
+admin.site.register(models.Recipe)
