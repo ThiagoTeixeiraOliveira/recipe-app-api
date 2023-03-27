@@ -3,7 +3,7 @@ Test custom Django management commands.
 """
 from unittest.mock import patch
 
-from psycopg2 import OperationalError as Psycopg2Error
+from psycopg2 import OperationalError as PsycopgOp2Error
 
 from django.core.management import call_command
 from django.db.utils import OperationalError
@@ -33,7 +33,7 @@ class CommandTests(SimpleTestCase):
         # that get handled differently depending on the time.
         # (if we pass an exception, mocking library knows
         # it should raise the exception)
-        patched_check.side_effect = [Psycopg2Error] * 2 + \
+        patched_check.side_effect = [PsycopgOp2Error] * 2 + \
             [OperationalError] * 3 + [True]
         # In this case, we are saying that the first two times we call
         # the mocked method, we raise the psycopg2error, and the next 3 times
