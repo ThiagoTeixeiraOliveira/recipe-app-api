@@ -27,7 +27,7 @@ def detail_url(recipe_id):
 
 
 def create_recipe(user, **params):
-    """"Create and return a sample recipe."""
+    """Create and return a sample recipe."""
     defaults = {
         "title": "Sample recipe title",
         "time_minutes": 22,
@@ -54,7 +54,6 @@ class PublicRecipeAPITests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
 
-
 class PrivateRecipeAPITests(TestCase):
     """Test authenticated API requests."""
 
@@ -66,7 +65,7 @@ class PrivateRecipeAPITests(TestCase):
         )
         self.client.force_authenticate(self.user)
 
-    def test_retrive_recipes(self):
+    def test_retrieve_recipes(self):
         """Test retrieving a list of recipes."""
         create_recipe(user=self.user)
         create_recipe(user=self.user)
