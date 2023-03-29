@@ -37,8 +37,13 @@ class RecipeViewSet(viewsets.ModelViewSet):
         """Create a new recipe."""
         serializer.save(user=self.request.user)
 
-"""Leave GenericViewSet at last, as it can override the behavior"""
-class TagViewSet(mixins.UpdateModelMixin,
+"""
+Leave GenericViewSet at last, as it can override the behavior
+We can add capabilities to the viewSet simply by adding parameters
+to the class. Don't need to change nothing in the code.
+"""
+class TagViewSet(mixins.DestroyModelMixin,
+                 mixins.UpdateModelMixin,
                  mixins.ListModelMixin,
                  viewsets.GenericViewSet):
     """Manage tags in the database."""
