@@ -37,7 +37,10 @@ class RecipeViewSet(viewsets.ModelViewSet):
         """Create a new recipe."""
         serializer.save(user=self.request.user)
 
-class TagViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+"""Leave GenericViewSet at last, as it can override the behavior"""
+class TagViewSet(mixins.UpdateModelMixin,
+                 mixins.ListModelMixin,
+                 viewsets.GenericViewSet):
     """Manage tags in the database."""
     serializer_class = serializers.TagSerializer
     queryset = Tag.objects.all()
